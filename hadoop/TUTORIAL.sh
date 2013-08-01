@@ -43,7 +43,7 @@ function run() {
 
 ${RED}Oh no! We failed to run '${command}'. If you need help try emailing:
 
-  mesos-dev@incubator.apache.org
+  dev@mesos.apache.org
 
 (Remember to include as much debug information as possible.)${NORMAL}
 
@@ -110,7 +110,7 @@ ${RED}We seem to be missing ${resource} from the directory containing
 this tutorial and we can't continue without it. If you haven't
 made any modifications to this directory, please report this to:
 
-  mesos-dev@incubator.apache.org
+  dev@mesos.apache.org
 
 (Remember to include as much debug information as possible.)${NORMAL}
 
@@ -132,7 +132,7 @@ ${RED}We seem to be missing ${program} from PATH.  Please install
 ${program} and re-run this tutorial.  If you still have troubles, please report
 this to:
 
-  mesos-dev@incubator.apache.org
+  dev@mesos.apache.org
 
 (Remember to include as much debug information as possible.)${NORMAL}
 
@@ -360,7 +360,7 @@ ${MESOS_BUILD_DIR}/src/.libs/libmesos.dylib).
 
 Have you already built Mesos? If you have, please report this to:
 
-  mesos-dev@incubator.apache.org
+  dev@mesos.apache.org
 
 (Remember to include as much debug information as possible.)${NORMAL}
 

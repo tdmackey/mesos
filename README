@@ -53,7 +53,7 @@ And the specific environment variables that might be relevant are:
 Java
 ====
 
-During configuraiton we attempt to determine a suitable location for
+During configuration we attempt to determine a suitable location for
 JDK so that we can build JNI based libraries. If we can not do so, you
 may need to try setting JAVA_HOME, JAVA_CPPFLAGS, or JAVA_LDFLAGS
 manually.
@@ -167,6 +167,6 @@ And you can stop the cluster by doing:
 
 As always, if you run into any issues please email:
 
-  mesos-dev@incubator.apache.org
+  dev@mesos.apache.org
 
 (Remember to include as much debug information as possible.)
