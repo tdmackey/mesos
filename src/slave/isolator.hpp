@@ -32,6 +32,7 @@
 #include <stout/hashmap.hpp>
 #include <stout/nothing.hpp>
 #include <stout/option.hpp>
+#include <stout/strings.hpp>
 #include <stout/uuid.hpp>
 
 #include "slave/flags.hpp"
@@ -54,6 +55,9 @@ class Isolator : public process::Process<Isolator>
 public:
   static Isolator* create(const std::string& type);
   static void destroy(Isolator* isolator);
+
+  // Properly setup resources
+  static Resources getResources(const Flags& flags);
 
   virtual ~Isolator() {}
 
