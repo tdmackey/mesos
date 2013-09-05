@@ -120,10 +120,10 @@ TEST_F(MasterTest, TaskRunning)
   EXPECT_CALL(exec, launchTask(_, _))
     .WillOnce(SendStatusUpdateFromTask(TASK_RUNNING));
 
-  Future<Nothing> resourcesChanged;
+  Future<Nothing> changeResources;
   EXPECT_CALL(isolator,
-              resourcesChanged(_, _, Resources(offers.get()[0].resources())))
-    .WillOnce(FutureSatisfy(&resourcesChanged));
+              changeResources(_, _, Resources(offers.get()[0].resources())))
+    .WillOnce(FutureSatisfy(&changeResources));
 
   Future<TaskStatus> status;
   EXPECT_CALL(sched, statusUpdate(&driver, _))
@@ -134,7 +134,7 @@ TEST_F(MasterTest, TaskRunning)
   AWAIT_READY(status);
   EXPECT_EQ(TASK_RUNNING, status.get().state());
 
-  AWAIT_READY(resourcesChanged);
+  AWAIT_READY(changeResources);
 
   EXPECT_CALL(exec, shutdown(_))
     .Times(AtMost(1));
@@ -192,10 +192,10 @@ TEST_F(MasterTest, ShutdownFrameworkWhileTaskRunning)
   EXPECT_CALL(exec, launchTask(_, _))
     .WillOnce(SendStatusUpdateFromTask(TASK_RUNNING));
 
-  Future<Nothing> resourcesChanged;
+  Future<Nothing> changeResources;
   EXPECT_CALL(isolator,
-              resourcesChanged(_, _, Resources(offers.get()[0].resources())))
-    .WillOnce(FutureSatisfy(&resourcesChanged));
+              changeResources(_, _, Resources(offers.get()[0].resources())))
+    .WillOnce(FutureSatisfy(&changeResources));
 
   Future<TaskStatus> status;
   EXPECT_CALL(sched, statusUpdate(&driver, _))
@@ -206,7 +206,7 @@ TEST_F(MasterTest, ShutdownFrameworkWhileTaskRunning)
   AWAIT_READY(status);
   EXPECT_EQ(TASK_RUNNING, status.get().state());
 
-  AWAIT_READY(resourcesChanged);
+  AWAIT_READY(changeResources);
 
   EXPECT_CALL(exec, shutdown(_))
     .Times(AtMost(1));

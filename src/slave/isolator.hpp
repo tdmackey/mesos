@@ -84,7 +84,7 @@ public:
 
   // Update the resource limits for a given framework. This method will
   // be called only after an executor for the framework is started.
-  virtual void resourcesChanged(
+  virtual void changeResources(
       const FrameworkID& frameworkId,
       const ExecutorID& executorId,
       const Resources& resources) = 0;

@@ -102,7 +102,7 @@ public:
       const FrameworkID& frameworkId,
       const ExecutorID& executorId);
 
-  virtual void resourcesChanged(
+  virtual void changeResources(
       const FrameworkID& frameworkId,
       const ExecutorID& executorId,
       const Resources& resources);

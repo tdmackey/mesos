@@ -1012,7 +1012,7 @@ void Slave::_runTask(
       // TODO(Charles Reiss): The isolator is not guaranteed to update
       // the resources before the executor acts on its RunTaskMessage.
       dispatch(isolator,
-               &Isolator::resourcesChanged,
+               &Isolator::changeResources,
                framework->id,
                executor->id,
                executor->resources);
@@ -1542,7 +1542,7 @@ void Slave::registerExecutor(
       // that this will be delivered or (where necessary) acted on
       // before the executor gets its RunTaskMessages.
       dispatch(isolator,
-               &Isolator::resourcesChanged,
+               &Isolator::changeResources,
                framework->id,
                executor->id,
                executor->resources);
@@ -1660,7 +1660,7 @@ void Slave::reregisterExecutor(
 
       // Tell the isolator to update the resources.
       dispatch(isolator,
-               &Isolator::resourcesChanged,
+               &Isolator::changeResources,
                frameworkId,
                executorId,
                executor->resources);
@@ -1851,7 +1851,7 @@ void Slave::statusUpdate(const StatusUpdate& update, const UPID& pid)
 
     // Tell the isolator to update the resources.
     dispatch(isolator,
-             &Isolator::resourcesChanged,
+             &Isolator::changeResources,
              framework->id,
              executor->id,
              executor->resources);

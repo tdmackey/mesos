@@ -157,7 +157,7 @@ public:
   }
 
   // Mocked so tests can check that the resources reflect all started tasks.
-  MOCK_METHOD3(resourcesChanged, void(const FrameworkID&,
+  MOCK_METHOD3(changeResources, void(const FrameworkID&,
                                       const ExecutorID&,
                                       const Resources&));
 
@@ -177,7 +177,7 @@ private:
   // Helper to setup default expectations.
   void setup()
   {
-    EXPECT_CALL(*this, resourcesChanged(testing::_, testing::_, testing::_))
+    EXPECT_CALL(*this, changeResources(testing::_, testing::_, testing::_))
       .Times(testing::AnyNumber());
 
     EXPECT_CALL(*this, usage(testing::_, testing::_))

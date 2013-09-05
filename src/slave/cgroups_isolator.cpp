@@ -530,7 +530,7 @@ void CgroupsIsolator::launchExecutor(
   }
 
   // Setup the initial resource constraints.
-  resourcesChanged(frameworkId, executorId, resources);
+  changeResources(frameworkId, executorId, resources);
 
   // Start listening on OOM events.
   oomListen(frameworkId, executorId);
@@ -691,7 +691,7 @@ void CgroupsIsolator::killExecutor(
 }
 
 
-void CgroupsIsolator::resourcesChanged(
+void CgroupsIsolator::changeResources(
     const FrameworkID& frameworkId,
     const ExecutorID& executorId,
     const Resources& resources)

@@ -285,12 +285,12 @@ void ProcessIsolator::killExecutor(
 }
 
 
-void ProcessIsolator::resourcesChanged(
+void ProcessIsolator::changeResources(
     const FrameworkID& frameworkId,
     const ExecutorID& executorId,
     const Resources& resources)
 {
-  CHECK(initialized) << "Cannot do resourcesChanged before initialization!";
+  CHECK(initialized) << "Cannot do changeResources before initialization!";
 
   if (!infos.contains(frameworkId) ||
       !infos[frameworkId].contains(executorId) ||
