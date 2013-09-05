@@ -70,7 +70,7 @@ public:
       const ExecutorID& executorId,
       const Resources& resources);
 
-  virtual process::Future<ResourceStatistics> usage(
+  virtual process::Future<ResourceStatistics> getResourceUsage(
       const FrameworkID& frameworkId,
       const ExecutorID& executorId);
 

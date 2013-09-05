@@ -98,7 +98,7 @@ TEST(MonitorTest, WatchUnwatch)
   process::spawn(isolator);
 
   Future<Nothing> usage1, usage2;
-  EXPECT_CALL(isolator, usage(frameworkId, executorId))
+  EXPECT_CALL(isolator, getResourceUsage(frameworkId, executorId))
     .WillOnce(DoAll(FutureSatisfy(&usage1),
                     Return(initialStatistics)))
     .WillOnce(DoAll(FutureSatisfy(&usage2),
@@ -212,7 +212,7 @@ TEST(MonitorTest, WatchUnwatch)
   process::Clock::settle();
 
   // This time, Isolator::usage should not get called.
-  EXPECT_CALL(isolator, usage(frameworkId, executorId))
+  EXPECT_CALL(isolator, getResourceUsage(frameworkId, executorId))
     .Times(0);
 
   process::Clock::advance(slave::RESOURCE_MONITORING_INTERVAL);

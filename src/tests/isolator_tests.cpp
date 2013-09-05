@@ -162,7 +162,7 @@ TYPED_TEST(IsolatorTest, Usage)
     Future<ResourceStatistics> usage =
       process::dispatch(
           (Isolator*) &isolator, // TODO(benh): Fix after reaper changes.
-          &Isolator::usage,
+          &Isolator::getResourceUsage,
           frameworkId.get(),
           executorId);
 

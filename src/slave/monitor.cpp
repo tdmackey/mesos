@@ -160,7 +160,7 @@ void ResourceMonitorProcess::collect(
     return;
   }
 
-  dispatch(isolator, &Isolator::usage, frameworkId, executorId)
+  dispatch(isolator, &Isolator::getResourceUsage, frameworkId, executorId)
     .onAny(defer(self(),
                  &Self::_collect,
                  lambda::_1,

@@ -723,7 +723,7 @@ void CgroupsIsolator::changeResources(
 }
 
 
-Future<ResourceStatistics> CgroupsIsolator::usage(
+Future<ResourceStatistics> CgroupsIsolator::getResourceUsage(
     const FrameworkID& frameworkId,
     const ExecutorID& executorId)
 {

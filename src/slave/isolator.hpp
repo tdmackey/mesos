@@ -90,7 +90,7 @@ public:
       const Resources& resources) = 0;
 
   // Returns the resource usage for the isolator.
-  virtual process::Future<ResourceStatistics> usage(
+  virtual process::Future<ResourceStatistics> getResourceUsage(
       const FrameworkID& frameworkId,
       const ExecutorID& executorId) = 0;
 

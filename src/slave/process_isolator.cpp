@@ -368,7 +368,7 @@ Future<Nothing> ProcessIsolator::recoverExecutors(
 }
 
 
-Future<ResourceStatistics> ProcessIsolator::usage(
+Future<ResourceStatistics> ProcessIsolator::getResourceUsage(
     const FrameworkID& frameworkId,
     const ExecutorID& executorId)
 {

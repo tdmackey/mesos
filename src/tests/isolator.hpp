@@ -162,7 +162,7 @@ public:
                                       const Resources&));
 
   MOCK_METHOD2(
-      usage,
+      getResourceUsage,
       process::Future<ResourceStatistics>(
           const FrameworkID&,
           const ExecutorID&));
@@ -180,7 +180,7 @@ private:
     EXPECT_CALL(*this, changeResources(testing::_, testing::_, testing::_))
       .Times(testing::AnyNumber());
 
-    EXPECT_CALL(*this, usage(testing::_, testing::_))
+    EXPECT_CALL(*this, getResourceUsage(testing::_, testing::_))
       .WillRepeatedly(testing::Return(ResourceStatistics()));
 
     EXPECT_CALL(*this, recoverExecutors(testing::_))
