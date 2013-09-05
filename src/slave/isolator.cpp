@@ -50,7 +50,7 @@ void Isolator::destroy(Isolator* isolator)
 
 // TODO(benh): Move this computation into Flags as the "default".
 // TODO(vinod): Move some of this computation into Resources.
-Resources Isolator::getResources(const Flags& flags)
+process::Future<Resources> Isolator::getResources(const Flags& flags)
 {
 
   Try<Resources> parse = Resources::parse(

@@ -111,8 +111,14 @@ void Slave::initialize()
   CHECK_SOME(os::mkdir(flags.work_dir))
     << "Failed to create slave work directory '" << flags.work_dir << "'";
 
+  // Spawn and initialize the isolator.
+  // TODO(benh): Seems like the isolator should really be
+  // spawned before being passed to the slave.
+  spawn(isolator);
+
   //Properly setup resources
-  Resources resources = Isolator::getResources(flags);
+  Future<Resources> future = dispatch(isolator, &Isolator::getResources, flags);
+  Resources resources = future.get();
 
   LOG(INFO) << "Slave resources: " << resources;
 
@@ -146,10 +152,6 @@ void Slave::initialize()
   info.mutable_attributes()->MergeFrom(attributes);
   info.set_checkpoint(flags.checkpoint);
 
-  // Spawn and initialize the isolator.
-  // TODO(benh): Seems like the isolator should really be
-  // spawned before being passed to the slave.
-  spawn(isolator);
 
   // TODO(vinod): Also pass SlaveID here. Currently it is tricky
   // because SlaveID is only known either after recovery (if previous

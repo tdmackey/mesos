@@ -56,9 +56,6 @@ public:
   static Isolator* create(const std::string& type);
   static void destroy(Isolator* isolator);
 
-  // Properly setup resources
-  static Resources getResources(const Flags& flags);
-
   virtual ~Isolator() {}
 
   // Called during slave initialization.
@@ -67,6 +64,9 @@ public:
       const Resources& resources,
       bool local,
       const process::PID<Slave>& slave) = 0;
+
+  // Properly setup resources
+  virtual process::Future<Resources> getResources(const Flags& flags);
 
   // Called by the slave to launch an executor for a given framework.
   // If 'checkpoint' is true, the isolator is expected to checkpoint
