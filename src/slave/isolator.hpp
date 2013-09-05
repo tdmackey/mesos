@@ -95,7 +95,7 @@ public:
       const ExecutorID& executorId) = 0;
 
   // Recover executors.
-  virtual process::Future<Nothing> recover(
+  virtual process::Future<Nothing> recoverExecutors(
       const Option<state::SlaveState>& state) = 0;
 };
 

@@ -168,7 +168,7 @@ public:
           const ExecutorID&));
 
   MOCK_METHOD1(
-      recover,
+      recoverExecutors,
       process::Future<Nothing>(const Option<slave::state::SlaveState>&));
 
   std::map<ExecutorID, std::string> directories;
@@ -183,7 +183,7 @@ private:
     EXPECT_CALL(*this, usage(testing::_, testing::_))
       .WillRepeatedly(testing::Return(ResourceStatistics()));
 
-    EXPECT_CALL(*this, recover(testing::_))
+    EXPECT_CALL(*this, recoverExecutors(testing::_))
       .WillRepeatedly(testing::Return(Nothing()));
   }
 

@@ -74,7 +74,7 @@ public:
       const FrameworkID& frameworkId,
       const ExecutorID& executorId);
 
-  virtual process::Future<Nothing> recover(
+  virtual process::Future<Nothing> recoverExecutors(
       const Option<state::SlaveState>& state);
 
 

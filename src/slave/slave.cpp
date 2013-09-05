@@ -2624,7 +2624,7 @@ Future<Nothing> Slave::recover(bool reconnect, bool strict)
   if (!os::exists(metaDir)) {
     // NOTE: We recover the isolator here to cleanup any old
     // executors (e.g: orphaned cgroups).
-    return dispatch(isolator, &Isolator::recover, None());
+    return dispatch(isolator, &Isolator::recoverExecutors, None());
   }
 
   // First, recover the slave state.
@@ -2642,7 +2642,7 @@ Future<Nothing> Slave::recover(bool reconnect, bool strict)
     // We are here if the slave died before checkpointing its info.
     // NOTE: We recover the isolator here to cleanup any old
     // executors (e.g: orphaned cgroups).
-    return dispatch(isolator, &Isolator::recover, None());
+    return dispatch(isolator, &Isolator::recoverExecutors, None());
   }
 
   // Check for SlaveInfo compatibility.
@@ -2679,7 +2679,7 @@ Future<Nothing> Slave::recover(bool reconnect, bool strict)
 
   // Now recover the status update manager and then the isolator.
   return statusUpdateManager->recover(metaDir, state.get())
-           .then(defer(isolator, &Isolator::recover, state.get()))
+           .then(defer(isolator, &Isolator::recoverExecutors, state.get()))
            .then(defer(self(), &Self::_recover, state.get(), reconnect));
 }
 

@@ -812,7 +812,7 @@ Future<ResourceStatistics> CgroupsIsolator::usage(
 }
 
 
-Future<Nothing> CgroupsIsolator::recover(
+Future<Nothing> CgroupsIsolator::recoverExecutors(
     const Option<SlaveState>& state)
 {
   LOG(INFO) << "Recovering isolator";

@@ -308,7 +308,7 @@ void ProcessIsolator::changeResources(
 }
 
 
-Future<Nothing> ProcessIsolator::recover(
+Future<Nothing> ProcessIsolator::recoverExecutors(
     const Option<SlaveState>& state)
 {
   LOG(INFO) << "Recovering isolator";
